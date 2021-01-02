@@ -1,0 +1,35 @@
+{
+  "name": "rescript",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w -ws _ ",
+    "clean": "bsb -clean-world",
+    "server": "webpack serve",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack:production": "NODE_ENV=production webpack"
+  },
+  "keywords": [
+    "BuckleScript",
+    "ReasonReact",
+    "reason-react"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@apollo/client": "^3.3.6",
+    "@reasonml-community/graphql-ppx": "1.0.0",
+    "graphql": "^15.4.0",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "reason-apollo-client": "^1.0.0",
+    "reason-react": ">=0.7.1",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1"
+  },
+  "devDependencies": {
+    "bs-platform": "^8.4.2",
+    "html-webpack-plugin": "^4.5.0",
+    "webpack-dev-server": "^3.11.1"
+  }
+}

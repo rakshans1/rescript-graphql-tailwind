@@ -1,0 +1,34 @@
+{
+  "name": "re-react-graphql",
+  "reason": {
+    "react-jsx": 3
+  },
+  "graphql": {
+    "apolloMode": true,
+    "extendMutation": "ApolloClient.GraphQL_PPX.ExtendMutation",
+    "extendQuery": "ApolloClient.GraphQL_PPX.ExtendQuery",
+    "extendSubscription": "ApolloClient.GraphQL_PPX.ExtendSubscription",
+    "templateTagReturnType": "ApolloClient.GraphQL_PPX.templateTagReturnType",
+    "templateTagImport": "gql",
+    "templateTagLocation": "@apollo/client"
+  },
+  "sources": {
+    "dir" : "src",
+    "subdirs" : true
+  },
+  "bsc-flags": ["-bs-super-errors", "-bs-no-version-header"],
+  "ppx-flags": ["@reasonml-community/graphql-ppx/ppx"],
+  "package-specs": [{
+    "module": "commonjs",
+    "in-source": true
+  }],
+  "suffix": ".bs.js",
+  "namespace": true,
+  "bs-dependencies": [
+    "reason-react",
+    "@reasonml-community/graphql-ppx",
+    "reason-apollo-client"
+  ],
+  "refmt": 3
+}
+
