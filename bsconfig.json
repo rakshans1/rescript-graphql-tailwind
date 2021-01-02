@@ -13,15 +13,32 @@
     "templateTagLocation": "@apollo/client"
   },
   "sources": {
-    "dir" : "src",
-    "subdirs" : true
+    "dir": "src",
+    "subdirs": true,
+    "generators": [
+      {
+        "name": "gen-tailwind",
+        "edge": ["tailwind.css", ":", "index.css"]
+      }
+    ]
   },
+  "generators": [
+    {
+      "name": "gen-tailwind",
+      "command": "tailwindcss build $in -o $out"
+    }
+  ],
   "bsc-flags": ["-bs-super-errors", "-bs-no-version-header"],
-  "ppx-flags": ["@reasonml-community/graphql-ppx/ppx"],
-  "package-specs": [{
-    "module": "commonjs",
-    "in-source": true
-  }],
+  "ppx-flags": [
+    "@reasonml-community/graphql-ppx/ppx",
+    ["tailwind-ppx", "-path ./src/tailwind.css"]
+  ],
+  "package-specs": [
+    {
+      "module": "commonjs",
+      "in-source": true
+    }
+  ],
   "suffix": ".bs.js",
   "namespace": true,
   "bs-dependencies": [
@@ -31,4 +48,3 @@
   ],
   "refmt": 3
 }
-

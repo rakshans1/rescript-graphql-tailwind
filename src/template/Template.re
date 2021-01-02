@@ -18,17 +18,16 @@ let make = () => {
   | {loading: true} => "Loading..."->React.string
   | {error: Some(_error)} => "Error loading data"->React.string
   | {data: Some({templates})} =>
-    <div>
-      <ul>
+    <div className=[%tw "flex"]>
         {templates
          ->Belt.Array.map(t =>
-             <li key={Js.String.make(t.id)}>
-               <img src={t.thumbnail_url} />
+             <div key={Js.String.make(t.id)} className=[%tw "px-2 text-center cursor-pointer"]>
+               /* <img src={t.thumbnail_url} /> */
+               <video src={t.preview_url}  controls=true/>
                <p> t.name->React.string </p>
-             </li>
+             </div>
            )
          ->React.array}
-      </ul>
     </div>
   | {data: None, error: None, loading: false} =>
     "I hope this is impossible, but sometimes it's not!"->React.string
