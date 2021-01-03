@@ -26,7 +26,10 @@ module.exports = {
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "styles.css",
+      chunkFilename: "styles.css"
+    }),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       inject: false
