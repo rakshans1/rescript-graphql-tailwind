@@ -41,7 +41,10 @@ let make = () => {
   | {error: Some(_error)} => "Error loading data"->React.string
   | {data: Some({templates})} =>
     let frameStyle = ReactDOM.Style.make(~height="360px", ~width="640px", ());
-    <div>
+    <div className=[%tw "container mx-auto text-center pt-10"]>
+      <p className=[%tw "font-sans text-3xl mb-3"]>
+        "Vote your favorite template"->React.string
+      </p>
       <div className=[%tw "flex"]>
         {templates
          ->Belt.Array.map(t =>
@@ -60,10 +63,11 @@ let make = () => {
                  />
                  <p className=[%tw "py-9"]> t.name->React.string </p>
                  <button
+                   className=[%tw "px-5 py-2 bg-indigo-600 text-white"]
                    onClick={_ => {
                      mutate({id: Some(t.id), score: Some(t.score + 1)})
-                     ->ignore
-                     refresh()
+                     ->ignore;
+                     refresh();
                    }}>
                    {React.string("Vote")}
                  </button>
@@ -71,7 +75,11 @@ let make = () => {
            )
          ->React.array}
       </div>
-      <button onClick={_ => refresh()}> {React.string("Refresh")} </button>
+      <button
+        className=[%tw "px-5 py-2 bg-gray-400 text-white"]
+        onClick={_ => refresh()}>
+        {React.string("Skip")}
+      </button>
     </div>;
   | {data: None, error: None, loading: false} =>
     "I hope this is impossible, but sometimes it's not!"->React.string

@@ -1,9 +1,12 @@
 [@react.component]
 let make = () => {
+  let url = ReasonReactRouter.useUrl();
   <ApolloClient.React.ApolloProvider client=Client.instance>
-    <div className=[%tw "container mx-auto text-center pt-10"]>
-      <p className=[%tw "font-sans text-3xl mb-3"]>"Vote your favorite template"->React.string</p>
-      <Template/>
-    </div>
+    <div className=[%tw "bg-gray-50 h-screen"]>
+    {switch (url.path) {
+     | ["admin"] => <TopTemplates />
+     | _ => <Template />
+     }}
+  </div>
   </ApolloClient.React.ApolloProvider>;
 };
